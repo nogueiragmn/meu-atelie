@@ -1,0 +1,6 @@
+[
+  { "id": "tartaruga", "nome": "Tartaruga", "arquivo": "tartaruga.svg" },
+  { "id": "gatinho", "nome": "Gatinho", "arquivo": "gatinho.svg" },
+  { "id": "peixinho", "nome": "Peixinho", "arquivo": "peixinho.svg" },
+  { "id": "casinha", "nome": "Casinha", "arquivo": "casinha.svg" }
+]

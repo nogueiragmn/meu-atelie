@@ -1,0 +1,11 @@
+{
+  "name": "Meu Ateliê",
+  "short_name": "Ateliê",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#FFF6E6",
+  "theme_color": "#FFF6E6",
+  "icons": [{ "src": "icone.png", "sizes": "180x180", "type": "image/png" }]
+}
