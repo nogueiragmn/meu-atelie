@@ -39,3 +39,7 @@ Ajustes opcionais por desenho (`"opcoes": { ... }`):
 
 Também dá para adicionar pelo próprio iPad com o cartão **+ Adicionar foto**.
 Funciona melhor com desenhos estilo cartoon: cores chapadas e contorno preto.
+
+## Créditos
+Seção "Grandes Mulheres": desenhos e textos do livro de colorir “Vamos Colorir! Grandes personalidades
+para meninas se inspirarem”, de @mariliaamaral999.

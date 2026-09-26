@@ -1,6 +1,6 @@
 // Guarda o app no iPad para funcionar sem internet.
 // Mude a versão quando quiser forçar uma atualização completa.
-const VERSAO = 'atelie-v1';
+const VERSAO = 'atelie-v2';
 const ARQUIVOS = [
   './', 'index.html', 'style.css', 'icone.png', 'manifest.json',
   'js/app.js', 'js/board.js', 'js/convert.js', 'js/palette.js', 'js/sound.js', 'js/store.js',

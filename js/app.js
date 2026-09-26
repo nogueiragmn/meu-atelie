@@ -136,19 +136,54 @@ async function pagesScreen(mode) {
     await store.put('paginas', { id: 'u' + Date.now(), nome: 'Desenho novo', blob: f });
     pagesScreen(mode);
   } });
-  const grid = h('div', { class: 'grid' },
-    pages.map((p) => h('div', { class: 'page-card', onclick: () => { sound.click(); openPage(mode, p); } },
-      h('img', { src: p.src, alt: p.nome, draggable: 'false' }),
-      h('span', {}, p.nome),
-      p.upload ? h('button', { class: 'del', onclick: async (e) => {
-        e.stopPropagation();
-        if (await confirmBox('Tirar este desenho da lista?')) { await store.del('paginas', p.id); pagesScreen(mode); }
-      } }, '✖') : null)),
-    h('div', { class: 'page-card add', onclick: () => fileInput.click() }, h('span', { class: 'plus' }, '+'), h('span', {}, 'Adicionar foto')),
+  const visible = pages.filter((p) => !(mode === 'numeros' && p.semCores));
+  const groups = [];
+  for (const p of visible) {
+    const g = p.upload ? 'Minhas fotos' : p.grupo || 'Desenhos';
+    let grp = groups.find((x) => x.nome === g);
+    if (!grp) groups.push((grp = { nome: g, credito: p.credito, pages: [] }));
+    grp.pages.push(p);
+  }
+  const cardOf = (p) => h('div', { class: 'page-card', onclick: () => { sound.click(); openPage(mode, p); } },
+    h('img', { src: p.src, alt: p.nome, draggable: 'false', loading: 'lazy' }),
+    h('span', {}, p.nome, p.parte ? h('small', { class: 'parte' }, ` ${p.parte}`) : null),
+    p.upload ? h('button', { class: 'del', onclick: async (e) => {
+      e.stopPropagation();
+      if (await confirmBox('Tirar este desenho da lista?')) { await store.del('paginas', p.id); pagesScreen(mode); }
+    } }, '✖') : null);
+  const addCard = h('div', { class: 'page-card add', onclick: () => fileInput.click() }, h('span', { class: 'plus' }, '+'), h('span', {}, 'Adicionar foto'));
+  const content = h('div', { class: 'groups' },
+    groups.map((g) => h('section', {},
+      h('h3', {}, g.nome),
+      g.credito ? h('p', { class: 'credito' }, g.credito) : null,
+      h('div', { class: 'grid' }, g.pages.map(cardOf)))),
+    h('section', {}, h('div', { class: 'grid' }, addCard)),
     fileInput);
   show(h('div', { class: 'list' },
     h('header', { class: 'topbar' }, h('button', { class: 'btn round', onclick: home }, '🏠'), h('h2', {}, title)),
-    grid), () => urls.forEach((u) => URL.revokeObjectURL(u)));
+    content), () => urls.forEach((u) => URL.revokeObjectURL(u)));
+}
+
+// Balão com a história do desenho (com leitura em voz alta)
+function storyCard(page) {
+  const synth = window.speechSynthesis;
+  const speak = () => {
+    if (!synth) return;
+    synth.cancel();
+    const u = new SpeechSynthesisUtterance(`${page.nome}. ${page.texto}`);
+    u.lang = 'pt-BR';
+    u.rate = 0.9;
+    const v = synth.getVoices().find((x) => x.lang === 'pt-BR' || x.lang === 'pt_BR');
+    if (v) u.voice = v;
+    synth.speak(u);
+  };
+  const card = h('div', { class: 'story' },
+    h('div', { class: 'story-text' }, h('strong', {}, page.nome), h('p', {}, page.texto)),
+    h('div', { class: 'story-btns' },
+      synth ? h('button', { class: 'btn round', title: 'Ouvir', onclick: speak }, '🔊') : null,
+      h('button', { class: 'btn round', title: 'Fechar', onclick: () => { synth && synth.cancel(); card.classList.add('hidden'); } }, '✖')));
+  const toggle = h('button', { class: 'btn round', title: 'História', onclick: () => card.classList.toggle('hidden') }, '📖');
+  return { card, toggle, stop: () => synth && synth.cancel() };
 }
 
 async function openPage(mode, page) {
@@ -179,15 +214,17 @@ async function workScreen(mode, page, conv) {
   const undoBtn = h('button', { class: 'btn round', title: 'Desfazer' }, '↩️');
   const trashBtn = h('button', { class: 'btn round', title: 'Apagar tudo' }, '🗑️');
   const saveBtn = h('button', { class: 'btn pill', title: 'Guardar' }, '⭐ Guardar');
+  const story = page.texto ? storyCard(page) : null;
   const root = h('div', { class: `work mode-${mode}` },
     h('header', { class: 'topbar' },
       h('button', { class: 'btn round', onclick: () => (mode === 'desenho' ? home() : pagesScreen(mode)) }, '⬅️'),
-      h('h2', {}, page.nome), progress, h('div', { class: 'spacer' }), undoBtn, trashBtn, saveBtn),
+      h('h2', {}, page.nome), progress, h('div', { class: 'spacer' }), story ? story.toggle : null, undoBtn, trashBtn, saveBtn),
     side, wrap, tray);
+  if (story) wrap.append(story.card);
 
   let board;
   const onResize = () => board && board.fit();
-  show(root, () => { window.removeEventListener('resize', onResize); clearTimeout(saveTimer); flush(); });
+  show(root, () => { window.removeEventListener('resize', onResize); clearTimeout(saveTimer); flush(); story && story.stop(); });
   window.addEventListener('resize', onResize);
   await new Promise((r) => requestAnimationFrame(r));
 

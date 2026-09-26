@@ -1,6 +1,326 @@
 [
-  { "id": "tartaruga", "nome": "Tartaruga", "arquivo": "tartaruga.svg" },
-  { "id": "gatinho", "nome": "Gatinho", "arquivo": "gatinho.svg" },
-  { "id": "peixinho", "nome": "Peixinho", "arquivo": "peixinho.svg" },
-  { "id": "casinha", "nome": "Casinha", "arquivo": "casinha.svg" }
+ {
+  "id": "tartaruga",
+  "nome": "Tartaruga",
+  "arquivo": "tartaruga.svg",
+  "grupo": "Bichinhos e cenas"
+ },
+ {
+  "id": "gatinho",
+  "nome": "Gatinho",
+  "arquivo": "gatinho.svg",
+  "grupo": "Bichinhos e cenas"
+ },
+ {
+  "id": "peixinho",
+  "nome": "Peixinho",
+  "arquivo": "peixinho.svg",
+  "grupo": "Bichinhos e cenas"
+ },
+ {
+  "id": "casinha",
+  "nome": "Casinha",
+  "arquivo": "casinha.svg",
+  "grupo": "Bichinhos e cenas"
+ },
+ {
+  "id": "celina-guimaraes-vianna-1",
+  "nome": "Celina Guimarães Vianna",
+  "parte": 1,
+  "arquivo": "mulheres/celina-guimaraes-vianna-1.jpg",
+  "texto": "Foi uma professora brasileira que ficou conhecida por ser uma das primeiras mulheres a votar no Brasil.",
+  "grupo": "Grandes Mulheres",
+  "semCores": true,
+  "credito": "Desenhos e textos: “Vamos Colorir! Grandes personalidades para meninas se inspirarem”, de @mariliaamaral999"
+ },
+ {
+  "id": "celina-guimaraes-vianna-2",
+  "nome": "Celina Guimarães Vianna",
+  "parte": 2,
+  "arquivo": "mulheres/celina-guimaraes-vianna-2.jpg",
+  "texto": "O que quase ninguém sabe é o quão conservadora ela era, valorizava muito a família e sempre dizia que seu marido tinha um papel muito importante em sua história.",
+  "grupo": "Grandes Mulheres",
+  "semCores": true,
+  "credito": "Desenhos e textos: “Vamos Colorir! Grandes personalidades para meninas se inspirarem”, de @mariliaamaral999"
+ },
+ {
+  "id": "celina-guimaraes-vianna-3",
+  "nome": "Celina Guimarães Vianna",
+  "parte": 3,
+  "arquivo": "mulheres/celina-guimaraes-vianna-3.jpg",
+  "texto": "Boa mãe e boa esposa, uma das primeiras mulheres a votar no Brasil disse em seu primeiro discurso como eleitora: “Eu não fiz nada! Tudo foi obra de meu marido.” Reforçando, com isto, a cumplicidade e incentivo que tinha em família.",
+  "grupo": "Grandes Mulheres",
+  "semCores": true,
+  "credito": "Desenhos e textos: “Vamos Colorir! Grandes personalidades para meninas se inspirarem”, de @mariliaamaral999"
+ },
+ {
+  "id": "madre-teresa-de-calcuta-1",
+  "nome": "Madre Teresa de Calcutá",
+  "parte": 1,
+  "arquivo": "mulheres/madre-teresa-de-calcuta-1.jpg",
+  "texto": "Ela foi uma mulher muito religiosa, humilde e cheia de amor. Dedicou sua vida a cuidar dos pobres, dos doentes e das pessoas que mais precisavam.",
+  "grupo": "Grandes Mulheres",
+  "semCores": true,
+  "credito": "Desenhos e textos: “Vamos Colorir! Grandes personalidades para meninas se inspirarem”, de @mariliaamaral999"
+ },
+ {
+  "id": "madre-teresa-de-calcuta-2",
+  "nome": "Madre Teresa de Calcutá",
+  "parte": 2,
+  "arquivo": "mulheres/madre-teresa-de-calcuta-2.jpg",
+  "texto": "Madre Teresa acreditava que cada vida era preciosa e que deveríamos amar e ajudar o próximo, especialmente os mais frágeis, como os bebezinhos nos ventres de suas mamães.",
+  "grupo": "Grandes Mulheres",
+  "semCores": true,
+  "credito": "Desenhos e textos: “Vamos Colorir! Grandes personalidades para meninas se inspirarem”, de @mariliaamaral999"
+ },
+ {
+  "id": "madre-teresa-de-calcuta-3",
+  "nome": "Madre Teresa de Calcutá",
+  "parte": 3,
+  "arquivo": "mulheres/madre-teresa-de-calcuta-3.jpg",
+  "texto": "Ela nos ensinou que, com fé, caridade e amor, podemos transformar o mundo, começando por cuidar de quem está ao nosso lado.",
+  "grupo": "Grandes Mulheres",
+  "semCores": true,
+  "credito": "Desenhos e textos: “Vamos Colorir! Grandes personalidades para meninas se inspirarem”, de @mariliaamaral999"
+ },
+ {
+  "id": "marie-curie-1",
+  "nome": "Marie Curie",
+  "parte": 1,
+  "arquivo": "mulheres/marie-curie-1.jpg",
+  "texto": "Ela foi uma mulher muito inteligente, estudiosa e corajosa, que dedicou sua vida à ciência. Foi a primeira mulher a ganhar um Prêmio Nobel e a única pessoa a ganhar o Nobel em duas áreas científicas diferentes!",
+  "grupo": "Grandes Mulheres",
+  "semCores": true,
+  "credito": "Desenhos e textos: “Vamos Colorir! Grandes personalidades para meninas se inspirarem”, de @mariliaamaral999"
+ },
+ {
+  "id": "marie-curie-2",
+  "nome": "Marie Curie",
+  "parte": 2,
+  "arquivo": "mulheres/marie-curie-2.jpg",
+  "texto": "Marie Curie descobriu coisas muito importantes sobre a radioatividade e ajudou a ciência a avançar.",
+  "grupo": "Grandes Mulheres",
+  "semCores": true,
+  "credito": "Desenhos e textos: “Vamos Colorir! Grandes personalidades para meninas se inspirarem”, de @mariliaamaral999"
+ },
+ {
+  "id": "marie-curie-3",
+  "nome": "Marie Curie",
+  "parte": 3,
+  "arquivo": "mulheres/marie-curie-3.jpg",
+  "texto": "Ela nos ensinou que, com estudo, dedicação e coragem, podemos descobrir coisas que ajudam a transformar o mundo.",
+  "grupo": "Grandes Mulheres",
+  "semCores": true,
+  "credito": "Desenhos e textos: “Vamos Colorir! Grandes personalidades para meninas se inspirarem”, de @mariliaamaral999"
+ },
+ {
+  "id": "princesa-isabel-1",
+  "nome": "Princesa Isabel",
+  "parte": 1,
+  "arquivo": "mulheres/princesa-isabel-1.jpg",
+  "texto": "Ela era uma princesa muito religiosa, corajosa e amava o Brasil. Era católica e acreditava que todas as pessoas deveriam ser tratadas com dignidade e respeito.",
+  "grupo": "Grandes Mulheres",
+  "semCores": true,
+  "credito": "Desenhos e textos: “Vamos Colorir! Grandes personalidades para meninas se inspirarem”, de @mariliaamaral999"
+ },
+ {
+  "id": "princesa-isabel-2",
+  "nome": "Princesa Isabel",
+  "parte": 2,
+  "arquivo": "mulheres/princesa-isabel-2.jpg",
+  "texto": "Em 1888, quando era regente do Brasil, ela assinou a Lei Áurea, que acabou oficialmente com a escravidão no nosso país.",
+  "grupo": "Grandes Mulheres",
+  "semCores": true,
+  "credito": "Desenhos e textos: “Vamos Colorir! Grandes personalidades para meninas se inspirarem”, de @mariliaamaral999"
+ },
+ {
+  "id": "princesa-isabel-3",
+  "nome": "Princesa Isabel",
+  "parte": 3,
+  "arquivo": "mulheres/princesa-isabel-3.jpg",
+  "texto": "Por sua fé, sua coragem e seu amor à família e à pátria, a Princesa Isabel ficou marcada na história do Brasil como uma mulher que ajudou a construir um país mais justo.",
+  "grupo": "Grandes Mulheres",
+  "semCores": true,
+  "credito": "Desenhos e textos: “Vamos Colorir! Grandes personalidades para meninas se inspirarem”, de @mariliaamaral999"
+ },
+ {
+  "id": "princesa-leopoldina-1",
+  "nome": "Princesa Leopoldina",
+  "parte": 1,
+  "arquivo": "mulheres/princesa-leopoldina-1.jpg",
+  "texto": "Ela foi uma princesa muito inteligente, estudiosa e religiosa. Era esposa de Dom Pedro I e teve um papel muito importante na Independência do Brasil.",
+  "grupo": "Grandes Mulheres",
+  "semCores": true,
+  "credito": "Desenhos e textos: “Vamos Colorir! Grandes personalidades para meninas se inspirarem”, de @mariliaamaral999"
+ },
+ {
+  "id": "princesa-leopoldina-2",
+  "nome": "Princesa Leopoldina",
+  "parte": 2,
+  "arquivo": "mulheres/princesa-leopoldina-2.jpg",
+  "texto": "Enquanto Dom Pedro estava viajando, Leopoldina ajudou a tomar decisões importantes e apoiou a separação do Brasil de Portugal. Ela amava sua família, sua fé e seu país.",
+  "grupo": "Grandes Mulheres",
+  "semCores": true,
+  "credito": "Desenhos e textos: “Vamos Colorir! Grandes personalidades para meninas se inspirarem”, de @mariliaamaral999"
+ },
+ {
+  "id": "princesa-leopoldina-3",
+  "nome": "Princesa Leopoldina",
+  "parte": 3,
+  "arquivo": "mulheres/princesa-leopoldina-3.jpg",
+  "texto": "Uma princesa corajosa, dedicada e patriota, que ajudou a escrever a história do nosso Brasil!",
+  "grupo": "Grandes Mulheres",
+  "semCores": true,
+  "credito": "Desenhos e textos: “Vamos Colorir! Grandes personalidades para meninas se inspirarem”, de @mariliaamaral999"
+ },
+ {
+  "id": "margaret-thatcher-1",
+  "nome": "Margaret Thatcher",
+  "parte": 1,
+  "arquivo": "mulheres/margaret-thatcher-1.jpg",
+  "texto": "Ela foi uma mulher muito corajosa e determinada, que se tornou a primeira mulher a ser primeira-ministra do Reino Unido. Era conhecida por ser firme, defender a liberdade, o trabalho e a responsabilidade de cada pessoa por suas próprias escolhas.",
+  "grupo": "Grandes Mulheres",
+  "semCores": true,
+  "credito": "Desenhos e textos: “Vamos Colorir! Grandes personalidades para meninas se inspirarem”, de @mariliaamaral999"
+ },
+ {
+  "id": "margaret-thatcher-2",
+  "nome": "Margaret Thatcher",
+  "parte": 2,
+  "arquivo": "mulheres/margaret-thatcher-2.jpg",
+  "texto": "Margaret acreditava muito na família, na tradição e no esforço individual. Por sua personalidade forte, ficou conhecida como a “Dama de Ferro”.",
+  "grupo": "Grandes Mulheres",
+  "semCores": true,
+  "credito": "Desenhos e textos: “Vamos Colorir! Grandes personalidades para meninas se inspirarem”, de @mariliaamaral999"
+ },
+ {
+  "id": "margaret-thatcher-3",
+  "nome": "Margaret Thatcher",
+  "parte": 3,
+  "arquivo": "mulheres/margaret-thatcher-3.jpg",
+  "texto": "Ela mostrou que uma mulher também podia liderar um país com coragem, firmeza e convicção, sem abrir mão de seus princípios e valores fundamentais.",
+  "grupo": "Grandes Mulheres",
+  "semCores": true,
+  "credito": "Desenhos e textos: “Vamos Colorir! Grandes personalidades para meninas se inspirarem”, de @mariliaamaral999"
+ },
+ {
+  "id": "phyllis-schlafly-1",
+  "nome": "Phyllis Schlafly",
+  "parte": 1,
+  "arquivo": "mulheres/phyllis-schlafly-1.jpg",
+  "texto": "Ela foi uma mulher muito inteligente, corajosa e determinada, que defendia a família, a maternidade e os valores tradicionais.",
+  "grupo": "Grandes Mulheres",
+  "semCores": true,
+  "credito": "Desenhos e textos: “Vamos Colorir! Grandes personalidades para meninas se inspirarem”, de @mariliaamaral999"
+ },
+ {
+  "id": "phyllis-schlafly-2",
+  "nome": "Phyllis Schlafly",
+  "parte": 2,
+  "arquivo": "mulheres/phyllis-schlafly-2.jpg",
+  "texto": "Phyllis acreditava que homens e mulheres tinham a mesma dignidade, mas que a família deveria ser protegida e valorizada. Ela ficou famosa por lutar contra mudanças que, na sua visão, poderiam enfraquecer a família e os valores da sociedade.",
+  "grupo": "Grandes Mulheres",
+  "semCores": true,
+  "credito": "Desenhos e textos: “Vamos Colorir! Grandes personalidades para meninas se inspirarem”, de @mariliaamaral999"
+ },
+ {
+  "id": "phyllis-schlafly-3",
+  "nome": "Phyllis Schlafly",
+  "parte": 3,
+  "arquivo": "mulheres/phyllis-schlafly-3.jpg",
+  "texto": "Foi uma mulher de muita convicção, que não teve medo de defender aquilo em que acreditava.",
+  "grupo": "Grandes Mulheres",
+  "semCores": true,
+  "credito": "Desenhos e textos: “Vamos Colorir! Grandes personalidades para meninas se inspirarem”, de @mariliaamaral999"
+ },
+ {
+  "id": "heley-de-abreu-1",
+  "nome": "Heley de Abreu",
+  "parte": 1,
+  "arquivo": "mulheres/heley-de-abreu-1.jpg",
+  "texto": "Heley era uma professora muito corajosa e amava muito as crianças.",
+  "grupo": "Grandes Mulheres",
+  "semCores": true,
+  "credito": "Desenhos e textos: “Vamos Colorir! Grandes personalidades para meninas se inspirarem”, de @mariliaamaral999"
+ },
+ {
+  "id": "heley-de-abreu-2",
+  "nome": "Heley de Abreu",
+  "parte": 2,
+  "arquivo": "mulheres/heley-de-abreu-2.jpg",
+  "texto": "Um dia, aconteceu uma grande tragédia na creche onde ela trabalhava. Mesmo com muito perigo, Heley pensou primeiro em proteger e salvar seus alunos. Ela foi uma verdadeira heroína, porque teve coragem de fazer tudo o que podia para cuidar das crianças.",
+  "grupo": "Grandes Mulheres",
+  "semCores": true,
+  "credito": "Desenhos e textos: “Vamos Colorir! Grandes personalidades para meninas se inspirarem”, de @mariliaamaral999"
+ },
+ {
+  "id": "heley-de-abreu-3",
+  "nome": "Heley de Abreu",
+  "parte": 3,
+  "arquivo": "mulheres/heley-de-abreu-3.jpg",
+  "texto": "Sua história nos ensina que amar também é cuidar, proteger e ter coragem para fazer o bem, mesmo nos momentos mais difíceis.",
+  "grupo": "Grandes Mulheres",
+  "semCores": true,
+  "credito": "Desenhos e textos: “Vamos Colorir! Grandes personalidades para meninas se inspirarem”, de @mariliaamaral999"
+ },
+ {
+  "id": "chiara-corbella-petrillo-1",
+  "nome": "Chiara Corbella Petrillo",
+  "parte": 1,
+  "arquivo": "mulheres/chiara-corbella-petrillo-1.jpg",
+  "texto": "Chiara foi uma jovem italiana muito alegre, católica e apaixonada por Jesus. Ela se casou, teve um filho e, mesmo enfrentando uma doença muito grave, escolheu viver com muita fé, amor e coragem.",
+  "grupo": "Grandes Mulheres",
+  "semCores": true,
+  "credito": "Desenhos e textos: “Vamos Colorir! Grandes personalidades para meninas se inspirarem”, de @mariliaamaral999"
+ },
+ {
+  "id": "chiara-corbella-petrillo-2",
+  "nome": "Chiara Corbella Petrillo",
+  "parte": 2,
+  "arquivo": "mulheres/chiara-corbella-petrillo-2.jpg",
+  "texto": "Ela nos ensinou que a vida é um presente de Deus e que podemos amar até nos momentos mais difíceis.",
+  "grupo": "Grandes Mulheres",
+  "semCores": true,
+  "credito": "Desenhos e textos: “Vamos Colorir! Grandes personalidades para meninas se inspirarem”, de @mariliaamaral999"
+ },
+ {
+  "id": "chiara-corbella-petrillo-3",
+  "nome": "Chiara Corbella Petrillo",
+  "parte": 3,
+  "arquivo": "mulheres/chiara-corbella-petrillo-3.jpg",
+  "texto": "Ela foi uma mulher de fé, família e esperança, que confiou em Deus e deixou uma linda história de amor.",
+  "grupo": "Grandes Mulheres",
+  "semCores": true,
+  "credito": "Desenhos e textos: “Vamos Colorir! Grandes personalidades para meninas se inspirarem”, de @mariliaamaral999"
+ },
+ {
+  "id": "gabriele-bitterlich-1",
+  "nome": "Gabriele Bitterlich",
+  "parte": 1,
+  "arquivo": "mulheres/gabriele-bitterlich-1.jpg",
+  "texto": "Foi uma mulher muito bondosa e caridosa que viveu na Áustria há muitos anos. Ela era mãe, cuidava da família dela e ajudava os mais necessitados.",
+  "grupo": "Grandes Mulheres",
+  "semCores": true,
+  "credito": "Desenhos e textos: “Vamos Colorir! Grandes personalidades para meninas se inspirarem”, de @mariliaamaral999"
+ },
+ {
+  "id": "gabriele-bitterlich-2",
+  "nome": "Gabriele Bitterlich",
+  "parte": 2,
+  "arquivo": "mulheres/gabriele-bitterlich-2.jpg",
+  "texto": "Muito religiosa, ela tinha o apelido carinhoso de “Mãe Gabriele”. Ficou conhecida por falar sobre a importância dos anjos de Deus, ensinando orações para que nunca nos esqueçamos de pedir a ajuda de nossos anjos da guarda.",
+  "grupo": "Grandes Mulheres",
+  "semCores": true,
+  "credito": "Desenhos e textos: “Vamos Colorir! Grandes personalidades para meninas se inspirarem”, de @mariliaamaral999"
+ },
+ {
+  "id": "gabriele-bitterlich-3",
+  "nome": "Gabriele Bitterlich",
+  "parte": 3,
+  "arquivo": "mulheres/gabriele-bitterlich-3.jpg",
+  "texto": "Ela escreveu bastantes livros para ajudar as pessoas a lembrarem que nunca estão sozinhas, porque sempre tem um anjinho bondoso de Deus olhando por elas.",
+  "grupo": "Grandes Mulheres",
+  "semCores": true,
+  "credito": "Desenhos e textos: “Vamos Colorir! Grandes personalidades para meninas se inspirarem”, de @mariliaamaral999"
+ }
 ]
