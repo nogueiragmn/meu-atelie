@@ -1,12 +1,18 @@
 # Meu Ateliê 🎨
 
-App de pintura e desenho para iPad, 100% local (sem internet).
+App de pintura e desenho para iPad. Funciona sem internet depois do primeiro acesso.
 
-## Ligar
-1. No Mac, dê dois cliques em `iniciar.command` (ou rode `python3 servidor.py` nesta pasta).
-   Na primeira vez o macOS pode perguntar se permite conexões para o Python: permita.
-2. No iPad (mesmo Wi-Fi), abra no Safari o endereço que aparece na janela (ex.: `http://192.168.3.102:8080`).
-3. Dica: no Safari do iPad toque em Compartilhar → **Adicionar à Tela de Início**. Assim ele abre em tela cheia, como um app.
+## Abrir no iPad
+1. No Safari do iPad, abra **https://nogueiragmn.github.io/meu-atelie/** (precisa de internet só nesta primeira vez).
+2. Toque em Compartilhar → **Adicionar à Tela de Início**. Abra sempre pelo ícone: fica em tela cheia,
+   funciona sem internet e o iPad não apaga as obras guardadas.
+3. Quando eu publicar novidades, elas aparecem na segunda vez que o app for aberto com internet.
+
+As pinturas e o progresso ficam salvos só no iPad; nada é enviado para a internet.
+O código e os desenhos da pasta `paginas/` ficam públicos no GitHub.
+
+Alternativa sem internet nenhuma: no Mac, dois cliques em `iniciar.command` e abra no iPad o endereço mostrado
+(as obras salvas nesse endereço ficam separadas das do site).
 
 ## Modos
 - **Pintar com números**: modelo colorido à esquerda, lápis numerados à direita. Escolha o número e toque na área para pintar.
@@ -18,7 +24,7 @@ App de pintura e desenho para iPad, 100% local (sem internet).
 O progresso de cada desenho fica salvo automaticamente no iPad.
 
 ## Adicionar desenhos
-Coloque a imagem (png, jpg, webp ou svg) em `paginas/` e adicione uma linha em `paginas/paginas.json`:
+Coloque a imagem (png, jpg, webp ou svg) em `paginas/`, adicione uma linha em `paginas/paginas.json` e publique (`git add -A && git commit -m 'novo desenho' && git push`):
 
 ```json
 { "id": "leao", "nome": "Leão", "arquivo": "leao.png" }
