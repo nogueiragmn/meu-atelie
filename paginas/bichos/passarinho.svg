@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+<g stroke="#222" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+<rect x="4" y="4" width="792" height="592" rx="12" fill="#9ED8FF"/>
+<path d="M739 100 L761 100 M722 142 L737 157 M680 159 L680 181 M638 142 L623 157 M621 100 L599 100 M638 58 L623 43 M680 41 L680 19 M722 58 L737 43 " fill="none"/><circle cx="680" cy="100" r="45" fill="#FFC81E"/>
+<g transform="translate(160 110) scale(1 1)" stroke-width="7.00"><path d="M-70 20 Q-95 -10 -60 -20 Q-50 -55 -10 -45 Q15 -70 45 -45 Q85 -45 75 -10 Q100 15 65 25 Z" fill="#FFFFFF"/></g>
+<g transform="translate(420 80) scale(0.8 0.8)" stroke-width="8.75"><path d="M-70 20 Q-95 -10 -60 -20 Q-50 -55 -10 -45 Q15 -70 45 -45 Q85 -45 75 -10 Q100 15 65 25 Z" fill="#FFFFFF"/></g>
+<path d="M4 430 Q300 400 520 440 Q650 460 796 420 L796 450 Q650 490 520 470 Q300 430 4 460 Z" fill="#6B3B1F"/>
+<ellipse cx="180" cy="400" rx="38" ry="18" fill="#2DB43E" transform="rotate(-25 180 400)"/><ellipse cx="640" cy="420" rx="38" ry="18" fill="#2DB43E" transform="rotate(20 640 420)"/><ellipse cx="700" cy="470" rx="34" ry="16" fill="#2DB43E" transform="rotate(30 700 470)"/><ellipse cx="120" cy="470" rx="34" ry="16" fill="#2DB43E" transform="rotate(25 120 470)"/>
+<circle cx="250" cy="405" r="24" fill="#FF5FA2"/><circle cx="250" cy="405" r="9" fill="#FFC81E"/><circle cx="590" cy="430" r="24" fill="#FFB6D3"/><circle cx="590" cy="430" r="9" fill="#FFC81E"/>
+<polygon points="300,330 220,290 230,350" fill="#2150D8"/><ellipse cx="390" cy="330" rx="110" ry="85" fill="#2BA6F5"/><ellipse cx="420" cy="360" rx="62" ry="48" fill="#FFC81E"/><ellipse cx="360" cy="320" rx="62" ry="36" fill="#2150D8" transform="rotate(-15 360 320)"/><circle cx="470" cy="250" r="62" fill="#2BA6F5"/><polygon points="525,245 575,262 525,280" fill="#FF8A1F"/><circle cx="485" cy="240" r="11" fill="#1E1E1E"/><circle cx="488.3" cy="236.15" r="3.8499999999999996" fill="#fff" stroke="none"/><circle cx="500" cy="275" r="12" fill="#FF5FA2"/><path d="M390 410 L380 445 M420 412 L425 447" fill="none"/>
+</g></svg>

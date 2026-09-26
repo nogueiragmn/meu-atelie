@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+<g stroke="#222" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+<rect x="4" y="4" width="792" height="592" rx="12" fill="#9ED8FF"/>
+<path d="M169 100 L191 100 M152 142 L167 157 M110 159 L110 181 M68 142 L53 157 M51 100 L29 100 M68 58 L53 43 M110 41 L110 19 M152 58 L167 43 " fill="none"/><circle cx="110" cy="100" r="45" fill="#FFC81E"/>
+<g transform="translate(470 100) scale(1 1)" stroke-width="7.00"><path d="M-70 20 Q-95 -10 -60 -20 Q-50 -55 -10 -45 Q15 -70 45 -45 Q85 -45 75 -10 Q100 15 65 25 Z" fill="#FFFFFF"/></g>
+<g transform="translate(680 150) scale(0.8 0.8)" stroke-width="8.75"><path d="M-70 20 Q-95 -10 -60 -20 Q-50 -55 -10 -45 Q15 -70 45 -45 Q85 -45 75 -10 Q100 15 65 25 Z" fill="#FFFFFF"/></g>
+<path d="M4 380 Q100 360 200 380 T400 380 T600 380 T796 380 L796 596 L4 596 Z" fill="#2150D8"/>
+<path d="M600 330 Q640 270 700 250 Q690 300 720 320 Q670 320 640 360 Z" fill="#2BA6F5"/><path d="M150 390 Q170 250 350 240 Q520 235 610 330 Q640 380 600 420 Q420 470 150 390 Z" fill="#2BA6F5"/><path d="M170 400 Q380 450 600 420 Q560 450 400 455 Q240 450 170 400 Z" fill="#9ED8FF"/><path d="M230 420 L240 440 M290 432 L296 452 M350 438 L352 458 M410 440 L410 460 M470 437 L466 457" fill="none"/><circle cx="260" cy="330" r="10" fill="#1E1E1E"/><circle cx="263.0" cy="326.5" r="3.5" fill="#fff" stroke="none"/><path d="M200 360 Q230 380 262 372" fill="none"/><path d="M320 240 Q300 190 280 170 M320 240 Q330 185 350 160 M320 240 Q345 200 380 190" fill="none"/><circle cx="278" cy="165" r="10" fill="#9ED8FF"/><circle cx="352" cy="155" r="10" fill="#9ED8FF"/><circle cx="385" cy="188" r="10" fill="#9ED8FF"/>
+<g transform="translate(690 262) scale(0.8 0.8)" stroke-width="8.75"><ellipse cx="0" cy="30" rx="60" ry="16" fill="#F8CBA2"/><path d="M40 25 L60 -10 M50 25 L78 0" fill="none"/><circle cx="60" cy="-12" r="5" fill="#1E1E1E"/><circle cx="80" cy="-2" r="5" fill="#1E1E1E"/><circle cx="-10" cy="0" r="40" fill="#FF8A1F"/><path d="M-10 0 m-8 0 a8 8 0 1 1 16 0 a16 16 0 1 1 -32 0 a24 24 0 1 1 48 0" fill="none"/></g>
+<path d="M60 480 Q80 465 100 480 M500 520 Q520 505 540 520 M680 470 Q700 455 720 470" fill="none"/>
+</g></svg>

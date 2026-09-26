@@ -43,3 +43,7 @@ Funciona melhor com desenhos estilo cartoon: cores chapadas e contorno preto.
 ## Créditos
 Seção "Grandes Mulheres": desenhos e textos do livro de colorir “Vamos Colorir! Grandes personalidades
 para meninas se inspirarem”, de @mariliaamaral999.
+
+## Desenhos próprios (Bichinhos e Santos)
+Gerados por `ferramentas/gerar.py` a partir de `ferramentas/santos.py` e `ferramentas/bichos.py`
+(usam o kit em `ferramentas/kit.py`). Para refazer: `python3 ferramentas/gerar.py`.

@@ -3,25 +3,161 @@
   "id": "tartaruga",
   "nome": "Tartaruga",
   "arquivo": "tartaruga.svg",
-  "grupo": "Bichinhos e cenas"
+  "grupo": "Bichinhos"
  },
  {
   "id": "gatinho",
   "nome": "Gatinho",
   "arquivo": "gatinho.svg",
-  "grupo": "Bichinhos e cenas"
+  "grupo": "Bichinhos"
  },
  {
   "id": "peixinho",
   "nome": "Peixinho",
   "arquivo": "peixinho.svg",
-  "grupo": "Bichinhos e cenas"
+  "grupo": "Bichinhos"
  },
  {
   "id": "casinha",
   "nome": "Casinha",
   "arquivo": "casinha.svg",
-  "grupo": "Bichinhos e cenas"
+  "grupo": "Bichinhos"
+ },
+ {
+  "id": "unicornio",
+  "nome": "Unicórnio",
+  "arquivo": "bichos/unicornio.svg",
+  "grupo": "Bichinhos"
+ },
+ {
+  "id": "passarinho",
+  "nome": "Passarinho",
+  "arquivo": "bichos/passarinho.svg",
+  "grupo": "Bichinhos"
+ },
+ {
+  "id": "galinha-e-pintinhos",
+  "nome": "Galinha e os pintinhos",
+  "arquivo": "bichos/galinha-e-pintinhos.svg",
+  "grupo": "Bichinhos"
+ },
+ {
+  "id": "vaca",
+  "nome": "Vaca",
+  "arquivo": "bichos/vaca.svg",
+  "grupo": "Bichinhos"
+ },
+ {
+  "id": "girafa",
+  "nome": "Girafa",
+  "arquivo": "bichos/girafa.svg",
+  "grupo": "Bichinhos"
+ },
+ {
+  "id": "hipopotamo",
+  "nome": "Hipopótamo",
+  "arquivo": "bichos/hipopotamo.svg",
+  "grupo": "Bichinhos"
+ },
+ {
+  "id": "capivara",
+  "nome": "Capivara",
+  "arquivo": "bichos/capivara.svg",
+  "grupo": "Bichinhos"
+ },
+ {
+  "id": "tubarao",
+  "nome": "Tubarão",
+  "arquivo": "bichos/tubarao.svg",
+  "grupo": "Bichinhos"
+ },
+ {
+  "id": "baleia-e-caracol",
+  "nome": "A baleia e o caracol",
+  "arquivo": "bichos/baleia-e-caracol.svg",
+  "grupo": "Bichinhos"
+ },
+ {
+  "id": "monstro-e-ratinho",
+  "nome": "O monstro e o ratinho",
+  "arquivo": "bichos/monstro-e-ratinho.svg",
+  "grupo": "Bichinhos"
+ },
+ {
+  "id": "macaquinho",
+  "nome": "Macaquinho curioso",
+  "arquivo": "bichos/macaquinho.svg",
+  "grupo": "Bichinhos"
+ },
+ {
+  "id": "santa-terezinha",
+  "nome": "Santa Terezinha do Menino Jesus",
+  "arquivo": "santos/santa-terezinha.svg",
+  "grupo": "Santos e Jesus",
+  "texto": "Santa Teresinha viveu na França e entrou no convento ainda bem jovem. Ela ensinava o “pequeno caminho”: fazer as coisas pequenas do dia a dia com muito amor a Jesus. E prometeu fazer cair do céu uma chuva de rosas!"
+ },
+ {
+  "id": "santa-catarina-de-sena",
+  "nome": "Santa Catarina de Sena",
+  "arquivo": "santos/santa-catarina-de-sena.svg",
+  "grupo": "Santos e Jesus",
+  "texto": "Santa Catarina viveu na Itália, há muito tempo. Era corajosa e rezava muito. Cuidava dos doentes e escrevia cartas até para o Papa, pedindo paz."
+ },
+ {
+  "id": "santa-teresa-davila",
+  "nome": "Santa Teresa d'Ávila",
+  "arquivo": "santos/santa-teresa-davila.svg",
+  "grupo": "Santos e Jesus",
+  "texto": "Santa Teresa viveu na Espanha e foi uma freira alegre e decidida. Escreveu livros ensinando que rezar é conversar com Deus como se conversa com um amigo."
+ },
+ {
+  "id": "sao-francisco",
+  "nome": "São Francisco de Assis",
+  "arquivo": "santos/sao-francisco.svg",
+  "grupo": "Santos e Jesus",
+  "texto": "São Francisco viveu na Itália. Deixou suas riquezas para viver com simplicidade e ajudar os pobres. Ele amava toda a criação de Deus e chamava os animais de irmãos."
+ },
+ {
+  "id": "sao-joao-paulo-ii",
+  "nome": "São João Paulo II",
+  "arquivo": "santos/sao-joao-paulo-ii.svg",
+  "grupo": "Santos e Jesus",
+  "texto": "São João Paulo II nasceu na Polônia e foi Papa por muitos anos. Viajou pelo mundo inteiro, gostava muito dos jovens e das crianças e sempre dizia: “Não tenham medo!”"
+ },
+ {
+  "id": "sao-padre-pio",
+  "nome": "São Padre Pio",
+  "arquivo": "santos/sao-padre-pio.svg",
+  "grupo": "Santos e Jesus",
+  "texto": "São Padre Pio foi um frade da Itália. Rezava muito o terço, ajudava as pessoas a se confessarem e construiu um hospital para cuidar dos doentes."
+ },
+ {
+  "id": "sao-carlo-acutis",
+  "nome": "São Carlo Acutis",
+  "arquivo": "santos/sao-carlo-acutis.svg",
+  "grupo": "Santos e Jesus",
+  "texto": "São Carlo Acutis foi um menino italiano que adorava computadores. Ele usou a internet para falar de Jesus e dizia que a Eucaristia era a sua estrada para o Céu."
+ },
+ {
+  "id": "jesus-e-as-criancas",
+  "nome": "Jesus e as crianças",
+  "arquivo": "santos/jesus-e-as-criancas.svg",
+  "grupo": "Santos e Jesus",
+  "texto": "Jesus disse: “Deixai vir a mim as criancinhas, porque delas é o Reino dos Céus.” Ele ama muito cada criança!"
+ },
+ {
+  "id": "nossa-senhora-das-gracas",
+  "nome": "Nossa Senhora das Graças",
+  "arquivo": "santos/nossa-senhora-das-gracas.svg",
+  "grupo": "Santos e Jesus",
+  "texto": "Em 1830, na França, Nossa Senhora apareceu para Santa Catarina Labouré. Das suas mãos saíam raios de luz: são as graças que ela dá a quem pede. Ela pediu que fosse feita a Medalha Milagrosa."
+ },
+ {
+  "id": "sagrada-familia",
+  "nome": "Sagrada Família",
+  "arquivo": "santos/sagrada-familia.svg",
+  "grupo": "Santos e Jesus",
+  "texto": "Jesus, Maria e José formam a Sagrada Família. Eles viviam em Nazaré, trabalhavam, rezavam juntos e se amavam muito."
  },
  {
   "id": "celina-guimaraes-vianna-1",
