@@ -113,6 +113,7 @@ export class Board {
     this.stage.style.width = `${Math.floor(this.w * s)}px`;
     this.stage.style.height = `${Math.floor(this.h * s)}px`;
     this._applyStrokeStyle();
+    if (this.zoomCtl) this._setView(this.zoom, this.panX, this.panY);
   }
 
   setTool(t) { this.tool = t; this._applyStrokeStyle(); }
@@ -145,33 +146,158 @@ export class Board {
   }
 
   _bind() {
-    const st = this.stage;
-    st.addEventListener('pointerdown', (e) => {
+    const wrap = this.wrap;
+    this.ptrs = new Map();
+    this.gesture = null;
+    this.tapStart = null;
+    this.blocked = false; // depois de um gesto de zoom, ignora o dedo que sobrou
+    const ignore = (e) => e.target.closest && e.target.closest('.story, .zoom-ctl');
+
+    wrap.addEventListener('pointerdown', (e) => {
+      if (ignore(e)) return;
       if (e.pointerType === 'pen') this.penSeen = true;
-      if (this.penSeen && e.pointerType === 'touch') return; // apoio da mão com Apple Pencil
-      if (this.active !== null) return;
       e.preventDefault();
+      try { wrap.setPointerCapture(e.pointerId); } catch {}
+      this.ptrs.set(e.pointerId, { x: e.clientX, y: e.clientY });
+      if (this.ptrs.size >= 2) {
+        if (this.active !== null) this._cancel();
+        this.tapStart = null;
+        this._startGesture();
+        return;
+      }
+      if (this.blocked) return;
       const p = this._pos(e);
-      if (this.tool === 'numero') { this.onTap && this.onTap(p.x, p.y); return; }
-      if (this.tool === 'balde') { this.bucket(p.x, p.y); return; }
+      const panOnly = this.penSeen && e.pointerType === 'touch'; // com Apple Pencil, o dedo só move
+      if (panOnly || this.tool === 'numero' || this.tool === 'balde') {
+        this.tapStart = { id: e.pointerId, x: e.clientX, y: e.clientY, p, panOnly, moved: false };
+        return;
+      }
       this.active = e.pointerId;
-      try { st.setPointerCapture(e.pointerId); } catch {}
       this._begin(p);
     });
-    const move = (e) => {
-      if (e.pointerId !== this.active) return;
+
+    wrap.addEventListener('pointermove', (e) => {
+      const pt = this.ptrs.get(e.pointerId);
+      if (!pt) return;
       e.preventDefault();
+      pt.x = e.clientX;
+      pt.y = e.clientY;
+      if (this.gesture) { this._updateGesture(); return; }
+      const t = this.tapStart;
+      if (t && t.id === e.pointerId) {
+        const dx = e.clientX - t.x, dy = e.clientY - t.y;
+        if (!t.moved && Math.hypot(dx, dy) > 12) { t.moved = true; t.pan0 = { x: this.panX, y: this.panY }; }
+        if (t.moved && this.zoom > 1) this._setView(this.zoom, t.pan0.x + dx, t.pan0.y + dy);
+        return;
+      }
+      if (e.pointerId !== this.active) return;
       const evs = e.getCoalescedEvents ? e.getCoalescedEvents() : [];
       for (const ev of evs.length ? evs : [e]) this._add(this._pos(ev));
+    });
+
+    const up = (e, cancelled) => {
+      if (!this.ptrs.delete(e.pointerId)) return;
+      if (this.gesture) {
+        if (this.ptrs.size < 2) { this.gesture = null; this.blocked = this.ptrs.size > 0; }
+        return;
+      }
+      const t = this.tapStart;
+      if (t && t.id === e.pointerId) {
+        this.tapStart = null;
+        if (!cancelled && !t.moved && !t.panOnly) {
+          if (this.tool === 'numero') this.onTap && this.onTap(t.p.x, t.p.y);
+          else this.bucket(t.p.x, t.p.y);
+        }
+      } else if (e.pointerId === this.active) {
+        this.active = null;
+        if (cancelled) this._cancel(); else this._end();
+      }
+      if (!this.ptrs.size) this.blocked = false;
     };
-    st.addEventListener('pointermove', move);
-    const up = (e) => {
-      if (e.pointerId !== this.active) return;
-      this.active = null;
-      this._end();
+    wrap.addEventListener('pointerup', (e) => up(e, false));
+    wrap.addEventListener('pointercancel', (e) => up(e, true));
+
+    // trackpad/mouse no Mac: rolar com Ctrl (ou pinça do trackpad) faz zoom
+    wrap.addEventListener('wheel', (e) => {
+      if (!e.ctrlKey) return;
+      e.preventDefault();
+      this._zoomAt(this.zoom * Math.exp(-e.deltaY * 0.01), e.clientX, e.clientY);
+    }, { passive: false });
+
+    // botões de zoom
+    const btn = (txt, title, fn) => {
+      const b = document.createElement('button');
+      b.className = 'btn round';
+      b.textContent = txt;
+      b.title = title;
+      b.addEventListener('click', fn);
+      return b;
     };
-    st.addEventListener('pointerup', up);
-    st.addEventListener('pointercancel', up);
+    this.zoomCtl = document.createElement('div');
+    this.zoomCtl.className = 'zoom-ctl';
+    this.zoomOut = btn('−', 'Diminuir', () => this.zoomBy(1 / 1.6));
+    this.zoomReset = btn('⤢', 'Ver tudo', () => this._setView(1, 0, 0));
+    this.zoomCtl.append(btn('+', 'Aumentar', () => this.zoomBy(1.6)), this.zoomOut, this.zoomReset);
+    wrap.append(this.zoomCtl);
+    this.zoom = 1;
+    this.panX = 0;
+    this.panY = 0;
+    this._setView(1, 0, 0);
+  }
+
+  _center() {
+    const r = this.wrap.getBoundingClientRect();
+    return { x: r.left + r.width / 2, y: r.top + r.height / 2, w: r.width, h: r.height };
+  }
+
+  _setView(z, px, py) {
+    z = Math.min(6, Math.max(1, z));
+    const c = this._center();
+    const sw = this.w * (this.scale || 1) * z, sh = this.h * (this.scale || 1) * z;
+    const mx = Math.max(0, (sw - c.w) / 2 + 60), my = Math.max(0, (sh - c.h) / 2 + 60);
+    if (z === 1) { px = 0; py = 0; }
+    this.zoom = z;
+    this.panX = Math.min(mx, Math.max(-mx, px));
+    this.panY = Math.min(my, Math.max(-my, py));
+    this.stage.style.transform = z === 1 ? '' : `translate(${this.panX}px, ${this.panY}px) scale(${z})`;
+    if (this.zoomCtl) this.zoomCtl.classList.toggle('zoomed', z > 1);
+  }
+
+  _zoomAt(z, cx, cy) {
+    z = Math.min(6, Math.max(1, z));
+    const c = this._center();
+    const lx = (cx - c.x - this.panX) / this.zoom, ly = (cy - c.y - this.panY) / this.zoom;
+    this._setView(z, cx - c.x - z * lx, cy - c.y - z * ly);
+  }
+
+  zoomBy(f) {
+    const c = this._center();
+    this._zoomAt(this.zoom * f, c.x, c.y);
+  }
+
+  _startGesture() {
+    const [a, b] = [...this.ptrs.values()];
+    this.gesture = {
+      d0: Math.hypot(a.x - b.x, a.y - b.y) || 1,
+      m0: { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 },
+      z0: this.zoom, pan0: { x: this.panX, y: this.panY },
+    };
+  }
+
+  _updateGesture() {
+    const [a, b] = [...this.ptrs.values()];
+    const g = this.gesture, c = this._center();
+    const d = Math.hypot(a.x - b.x, a.y - b.y), m = { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 };
+    const z = Math.min(6, Math.max(1, g.z0 * d / g.d0));
+    const lx = (g.m0.x - c.x - g.pan0.x) / g.z0, ly = (g.m0.y - c.y - g.pan0.y) / g.z0;
+    this._setView(z, m.x - c.x - z * lx, m.y - c.y - z * ly);
+  }
+
+  _cancel() {
+    this.active = null;
+    this.bbox = null;
+    this.pts = [];
+    this.sctx.clearRect(0, 0, this.w, this.h);
   }
 
   // ---------- traço ----------

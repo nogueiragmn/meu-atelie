@@ -313,8 +313,15 @@ function setupNumbers({ board, conv, page, side, tray, progress, trashBtn, saved
   if (saved && saved.filled) for (const i of saved.filled) if (regions[i] && !done[i]) { done[i] = 1; board.fillRegion(i, hexOf(regions[i].num), { undo: false }); }
 
   const total = regions.filter((r) => r.num && !r.tiny).length;
-  let sel = 1;
+  let sel = 0; // nenhum lápis escolhido no início: a criança procura o número
+  let flash = -1; // área tocada com a cor errada (mostra o número dela em destaque)
   const pens = numbers.map((n) => pencil(PALETTE[n.color], { num: n.num, onclick: () => { sound.click(); select(n.num); } }));
+  // ordem embaralhada na bandeja
+  const ordem = pens.slice();
+  for (let k = ordem.length - 1; k > 0; k--) {
+    const j = Math.floor(Math.random() * (k + 1));
+    [ordem[k], ordem[j]] = [ordem[j], ordem[k]];
+  }
 
   const remaining = (num) => regions.some((r, i) => r.num === num && !done[i]);
   const refresh = () => {
@@ -324,8 +331,16 @@ function setupNumbers({ board, conv, page, side, tray, progress, trashBtn, saved
     ctx.textBaseline = 'middle';
     regions.forEach((r, i) => {
       if (done[i]) return;
-      const on = r.num === sel;
-      if (on) {
+      const on = r.num === sel || i === flash;
+      if (i === flash) {
+        ctx.beginPath();
+        ctx.arc(r.lx, r.ly, r.fs * 1.05, 0, Math.PI * 2);
+        ctx.fillStyle = '#fff';
+        ctx.fill();
+        ctx.lineWidth = Math.max(3, r.fs * 0.12);
+        ctx.strokeStyle = '#E5202A';
+        ctx.stroke();
+      } else if (on) {
         ctx.beginPath();
         ctx.arc(r.lx, r.ly, r.fs * 0.78, 0, Math.PI * 2);
         ctx.fillStyle = hexOf(r.num);
@@ -336,7 +351,7 @@ function setupNumbers({ board, conv, page, side, tray, progress, trashBtn, saved
         ctx.strokeStyle = '#222';
         ctx.stroke();
       }
-      ctx.font = `${on ? 800 : 600} ${r.fs}px ui-rounded, "SF Pro Rounded", system-ui, sans-serif`;
+      ctx.font = `${on ? 800 : 600} ${i === flash ? r.fs * 1.3 : r.fs}px ui-rounded, "SF Pro Rounded", system-ui, sans-serif`;
       ctx.fillStyle = on ? '#111' : '#7a7a7a';
       ctx.fillText(String(r.num), r.lx, r.ly + r.fs * 0.05);
     });
@@ -348,27 +363,33 @@ function setupNumbers({ board, conv, page, side, tray, progress, trashBtn, saved
     });
   };
   const select = (num) => { sel = num; refresh(); };
+  let flashTimer = 0;
   const persist = () => schedule(() => store.put('estado', { filled: [...done.keys()].filter((i) => done[i] && regions[i].num && !regions[i].tiny) }, stateKey));
 
   board.onTap = (x, y) => {
     const i = board.regionAt(x, y);
     if (i < 0 || done[i]) return;
     const r = regions[i];
-    if (r.num !== sel) {
+    if (!sel) {
+      // ainda não escolheu o lápis: a bandeja balança como lembrete
       sound.oops();
-      const el = pens[r.num - 1];
-      el.classList.remove('hint');
-      void el.offsetWidth;
-      el.classList.add('hint');
+      tray.classList.remove('hint');
+      void tray.offsetWidth;
+      tray.classList.add('hint');
+      return;
+    }
+    if (r.num !== sel) {
+      // cor errada: mostra o número certo daquela área para ela procurar o lápis
+      sound.oops();
+      flash = i;
+      refresh();
+      clearTimeout(flashTimer);
+      flashTimer = setTimeout(() => { flash = -1; refresh(); }, 1200);
       return;
     }
     board.fillRegion(i, hexOf(r.num), { extra: { r: i } });
     done[i] = 1;
     sound.pop();
-    if (!remaining(sel)) {
-      const next = numbers.find((n) => remaining(n.num));
-      if (next) setTimeout(() => select(next.num), 450);
-    }
     refresh();
     persist();
     if (regions.every((_, k) => done[k])) {
@@ -385,7 +406,7 @@ function setupNumbers({ board, conv, page, side, tray, progress, trashBtn, saved
     if (!(await confirmBox('Apagar a pintura e começar de novo?'))) return;
     board.undoStack = [];
     reset();
-    sel = numbers.length ? numbers[0].num : 1;
+    sel = 0;
     refresh();
     persist();
   };
@@ -394,9 +415,8 @@ function setupNumbers({ board, conv, page, side, tray, progress, trashBtn, saved
   let showingModel = true;
   side.append(h('div', { class: 'model', onclick: () => { showingModel = !showingModel; modelImg.src = showingModel ? conv.modelURL : conv.originalSrc; } },
     modelImg, h('small', {}, 'Modelo — toque para trocar')));
-  tray.append(h('div', { class: 'pencils numbered', style: { '--n': numbers.length } }, pens));
-  const first = numbers.find((n) => remaining(n.num));
-  select(first ? first.num : 1);
+  tray.append(h('div', { class: 'pencils numbered', style: { '--n': numbers.length } }, ordem));
+  refresh();
 }
 
 async function gallery() {

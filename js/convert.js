@@ -82,6 +82,91 @@ function components(key, w, h) {
   return { comp, counts, labels, seeds };
 }
 
+// Afina a máscara de linhas até 1px (Zhang-Suen).
+function skeleton(mask, w, h) {
+  const sk = new Uint8Array(mask);
+  const del = [];
+  let changed = true;
+  while (changed) {
+    changed = false;
+    for (let pass = 0; pass < 2; pass++) {
+      del.length = 0;
+      for (let y = 1; y < h - 1; y++) {
+        for (let x = 1; x < w - 1; x++) {
+          const i = y * w + x;
+          if (!sk[i]) continue;
+          const p2 = sk[i - w], p3 = sk[i - w + 1], p4 = sk[i + 1], p5 = sk[i + w + 1];
+          const p6 = sk[i + w], p7 = sk[i + w - 1], p8 = sk[i - 1], p9 = sk[i - w - 1];
+          const b = p2 + p3 + p4 + p5 + p6 + p7 + p8 + p9;
+          if (b < 2 || b > 6) continue;
+          const a = (!p2 && p3) + (!p3 && p4) + (!p4 && p5) + (!p5 && p6) + (!p6 && p7) + (!p7 && p8) + (!p8 && p9) + (!p9 && p2);
+          if (a !== 1) continue;
+          if (pass === 0 ? (p2 && p4 && p6) || (p4 && p6 && p8) : (p2 && p4 && p8) || (p2 && p6 && p8)) continue;
+          del.push(i);
+        }
+      }
+      if (del.length) { changed = true; for (const i of del) sk[i] = 0; }
+    }
+  }
+  return sk;
+}
+
+// Liga cada ponta solta ao traço mais próximo (que não seja o próprio traço) até D pixels.
+// Devolve uma máscara: 1 = ponte nova, 2 = pixel que já era linha.
+function closeGaps(line, w, h, D) {
+  const N = w * h, sk = skeleton(line, w, h);
+  const ponte = new Uint8Array(N);
+  const stamp = new Int32Array(N);
+  const G = Math.round(D * 2.5);
+  const q = new Int32Array(N), dist = new Int16Array(N);
+  let id = 0;
+  for (let y = 2; y < h - 2; y++) {
+    for (let x = 2; x < w - 2; x++) {
+      const e = y * w + x;
+      if (!sk[e]) continue;
+      const nb = sk[e - w - 1] + sk[e - w] + sk[e - w + 1] + sk[e - 1] + sk[e + 1] + sk[e + w - 1] + sk[e + w] + sk[e + w + 1];
+      if (nb !== 1) continue;
+      // marca o próprio traço perto da ponta (até G passos pela linha)
+      id++;
+      let qh = 0, qt = 0;
+      q[qt++] = e; stamp[e] = id; dist[e] = 0;
+      while (qh < qt) {
+        const i = q[qh++];
+        if (dist[i] >= G) continue;
+        const ix = i % w;
+        for (let dy = -w; dy <= w; dy += w) {
+          for (let dx = -1; dx <= 1; dx++) {
+            const j = i + dy + dx;
+            if (j < 0 || j >= N || stamp[j] === id || !line[j]) continue;
+            const jx = j % w;
+            if (Math.abs(jx - ix) > 1) continue;
+            stamp[j] = id; dist[j] = dist[i] + 1; q[qt++] = j;
+          }
+        }
+      }
+      // procura a linha "de outro traço" mais próxima
+      let best = -1, bd = D * D + 1;
+      for (let yy = Math.max(0, y - D); yy <= Math.min(h - 1, y + D); yy++) {
+        for (let xx = Math.max(0, x - D); xx <= Math.min(w - 1, x + D); xx++) {
+          const j = yy * w + xx;
+          if (!line[j] || stamp[j] === id) continue;
+          const d2 = (xx - x) ** 2 + (yy - y) ** 2;
+          if (d2 < bd) { bd = d2; best = j; }
+        }
+      }
+      if (best < 0) continue;
+      // desenha a ponte (2px)
+      const bx = best % w, by = (best / w) | 0;
+      const steps = Math.max(Math.abs(bx - x), Math.abs(by - y));
+      for (let k = 0; k <= steps; k++) {
+        const px = Math.round(x + ((bx - x) * k) / steps), py = Math.round(y + ((by - y) * k) / steps);
+        for (const j of [py * w + px, py * w + px + 1, (py + 1) * w + px]) if (!line[j]) ponte[j] = 1;
+      }
+    }
+  }
+  return ponte;
+}
+
 function labDist(a, b) {
   return (a[0] - b[0]) ** 2 + (a[1] - b[1]) ** 2 + (a[2] - b[2]) ** 2;
 }
@@ -95,6 +180,8 @@ function labDist(a, b) {
  *  maxCores  número máximo de cores (sem limite)
  *  minArea   área mínima de uma região em pixels (auto)
  *  bordas    true = desenha linha entre cores diferentes mesmo sem contorno (true)
+ *  linhas    [[x1,y1,x2,y2,...], ...] traços extras em coordenadas da imagem original
+ *  fechar    liga pontas soltas de traços a até N pixels (em escala 1400) com linhas invisíveis
  */
 export function convertImage(img, opts = {}) {
   const size = opts.tamanho || 1400;
@@ -108,6 +195,19 @@ export function convertImage(img, opts = {}) {
   sx.fillRect(0, 0, w, h);
   sx.imageSmoothingQuality = 'high';
   sx.drawImage(img, 0, 0, w, h);
+  // linhas extras desenhadas à mão (coordenadas da imagem original), ex.: contorno do cabelo na testa
+  if (opts.linhas) {
+    sx.save();
+    sx.strokeStyle = '#222';
+    sx.lineWidth = (opts.linhaLargura || 2.5) * sc;
+    sx.lineCap = sx.lineJoin = 'round';
+    for (const l of opts.linhas) {
+      sx.beginPath();
+      for (let k = 0; k < l.length; k += 2) sx[k ? 'lineTo' : 'moveTo'](l[k] * sc, l[k + 1] * sc);
+      sx.stroke();
+    }
+    sx.restore();
+  }
   const px = sx.getImageData(0, 0, w, h).data;
 
   // 1. Luminosidade, croma e cor da paleta mais próxima de cada pixel
@@ -172,6 +272,14 @@ export function convertImage(img, opts = {}) {
         if (c >= 0 && bc.counts[c] >= minBlob) line[i] = 0;
       }
     }
+  }
+  // 3b. Fecha pequenas aberturas (ex.: fios de cabelo que terminam sem contorno na testa).
+  //     As pontas soltas dos traços são ligadas ao traço vizinho por uma linha invisível.
+  let ponte = null;
+  if (opts.fechar) {
+    const D = Math.round((opts.fechar * size) / 1400);
+    ponte = closeGaps(line, w, h, D);
+    for (let i = 0; i < N; i++) if (ponte[i]) line[i] = 1;
   }
   for (let i = 0; i < N; i++) if (line[i]) lbl[i] = -1;
 
@@ -333,6 +441,46 @@ export function convertImage(img, opts = {}) {
     }
   }
 
+  // 10b. Pedaços finos separados só por pontes invisíveis (ex.: mechas de cabelo) voltam a ser uma área só.
+  //      Áreas largas (rosto, fundo) nunca entram nessa união.
+  if (ponte) {
+    const R = regions.length, pai = new Int32Array(R).map((_, k) => k);
+    const raiz = (k) => { while (pai[k] !== k) k = pai[k] = pai[pai[k]]; return k; };
+    const fino = size / 50;
+    for (let y = 2; y < h - 2; y++) {
+      for (let x = 2; x < w - 2; x++) {
+        if (ponte[y * w + x] !== 1) continue;
+        let a = -1;
+        for (let dy = -2; dy <= 2; dy++) {
+          for (let dx = -2; dx <= 2; dx++) {
+            const r = regionId[(y + dy) * w + x + dx];
+            if (r < 0 || regions[r].rad >= fino) continue;
+            if (a < 0) a = r; else { const ra = raiz(a), rb = raiz(r); if (ra !== rb) pai[rb] = ra; }
+          }
+        }
+      }
+    }
+    const novo = new Int32Array(R).fill(-1), juntas = [];
+    for (let k = 0; k < R; k++) {
+      const r0 = raiz(k);
+      if (novo[r0] < 0) { novo[r0] = juntas.length; juntas.push({ ...regions[r0], count: 0, maior: 0 }); }
+      novo[k] = novo[r0];
+      const J = juntas[novo[k]], r = regions[k];
+      J.count += r.count;
+      J.x0 = Math.min(J.x0, r.x0); J.y0 = Math.min(J.y0, r.y0); J.x1 = Math.max(J.x1, r.x1); J.y1 = Math.max(J.y1, r.y1);
+      if (r.rad > J.rad) { J.rad = r.rad; J.lx = r.lx; J.ly = r.ly; }
+      if (r.count > J.maior) { J.maior = r.count; J.color = r.color; }
+    }
+    if (juntas.length < R) {
+      for (let i = 0; i < N; i++) {
+        if (owner[i] >= 0) owner[i] = novo[owner[i]];
+        if (regionId[i] >= 0) regionId[i] = novo[regionId[i]];
+      }
+      regions.length = 0;
+      for (const J of juntas) { delete J.maior; regions.push(J); }
+    }
+  }
+
   // 11. Numeração: cores usadas (menos o branco) viram 1..k
   //     Regiões minúsculas e pequenas áreas pretas já vêm pintadas.
   for (const r of regions) r.tiny = r.rad < 5 || (r.color === BLACK && r.count < N * 0.01);
@@ -353,6 +501,7 @@ export function convertImage(img, opts = {}) {
       for (let x = 0; x < w; x++) {
         const i = y * w + x, j = i * 4;
         d[j] = 34; d[j + 1] = 30; d[j + 2] = 32;
+        if (ponte && ponte[i] === 1) continue; // ponte invisível
         if (line[i]) { d[j + 3] = 255; continue; }
         let n = 0;
         if (x > 0) n += line[i - 1];
