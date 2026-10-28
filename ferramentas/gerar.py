@@ -3,7 +3,10 @@ import os, sys, importlib
 sys.path.insert(0, os.path.dirname(__file__))
 RAIZ = os.path.join(os.path.dirname(__file__), '..', 'paginas')
 cards = []
-for mod, pasta in [('santos', 'santos'), ('bichos', 'bichos')]:
+so = sys.argv[1:]  # opcional: gerar só alguns módulos
+for mod, pasta in [('santos', 'santos'), ('bichos', 'bichos'), ('princesas', 'princesas')]:
+    if so and mod not in so:
+        continue
     try:
         m = importlib.import_module(mod)
     except ModuleNotFoundError:

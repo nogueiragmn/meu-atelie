@@ -90,6 +90,55 @@
   "grupo": "Bichinhos"
  },
  {
+  "id": "princesas-do-gelo",
+  "nome": "Princesas do gelo",
+  "arquivo": "princesas/princesas-do-gelo.svg",
+  "grupo": "Princesas",
+  "texto": "Duas irmãs princesas vivem num castelo de gelo. Uma delas faz flocos de neve com as mãos! Junto com o amigo boneco de neve, elas descobrem que o amor entre irmãs aquece até o inverno mais frio."
+ },
+ {
+  "id": "bela-e-a-rosa",
+  "nome": "A Bela e a rosa encantada",
+  "arquivo": "princesas/bela-e-a-rosa.svg",
+  "grupo": "Princesas",
+  "texto": "Bela adorava ler livros. Num castelo encantado, ela conheceu uma Fera que parecia assustadora, mas tinha bom coração. Com sua bondade, Bela quebrou o feitiço da rosa encantada."
+ },
+ {
+  "id": "cinderela",
+  "nome": "Cinderela",
+  "arquivo": "princesas/cinderela.svg",
+  "grupo": "Princesas",
+  "texto": "Cinderela era gentil com todos. Com a ajuda da fada madrinha, uma abóbora virou carruagem e ela foi ao baile. À meia-noite o encanto acabou, mas o sapatinho de cristal ajudou o príncipe a encontrá-la."
+ },
+ {
+  "id": "bela-adormecida",
+  "nome": "Bela Adormecida",
+  "arquivo": "princesas/bela-adormecida.svg",
+  "grupo": "Princesas",
+  "texto": "Três fadas boas cuidaram de uma princesa desde bebê. Por causa de um feitiço, ela dormiu por muito tempo no castelo, até que o amor verdadeiro a despertou."
+ },
+ {
+  "id": "rapunzel",
+  "nome": "Rapunzel",
+  "arquivo": "princesas/rapunzel.svg",
+  "grupo": "Princesas",
+  "texto": "Rapunzel morava no alto de uma torre e tinha cabelos compridos, compridos, tão compridos que dava para subir por eles! Ela sonhava em ver de perto as luzes que brilhavam no céu."
+ },
+ {
+  "id": "pequena-sereia",
+  "nome": "A pequena sereia",
+  "arquivo": "princesas/pequena-sereia.svg",
+  "grupo": "Princesas",
+  "texto": "Uma pequena sereia vivia no fundo do mar com os peixinhos. Ela tinha a voz mais bonita do oceano e sonhava em conhecer o mundo lá em cima, acima das ondas."
+ },
+ {
+  "id": "branca-de-neve",
+  "nome": "Branca de Neve",
+  "arquivo": "princesas/branca-de-neve.svg",
+  "grupo": "Princesas",
+  "texto": "Branca de Neve morava numa casinha na floresta com sete anões. Ela era bondosa e alegre, e os passarinhos adoravam cantar com ela. Mas cuidado com a maçã!"
+ },
+ {
   "id": "santa-terezinha",
   "nome": "Santa Terezinha do Menino Jesus",
   "arquivo": "santos/santa-terezinha.svg",

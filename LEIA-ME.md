@@ -15,8 +15,9 @@ Alternativa sem internet nenhuma: no Mac, dois cliques em `iniciar.command` e ab
 (as obras salvas nesse endereço ficam separadas das do site).
 
 ## Modos
-- **Pintar com números**: modelo colorido à esquerda, lápis numerados à direita. Escolha o número e toque na área para pintar.
-  Se tocar numa área com a cor errada, o lápis certo balança como dica.
+- **Pintar com números**: modelo colorido à esquerda, lápis numerados (em ordem embaralhada) à direita. Escolha o número e toque na área para pintar.
+  Se tocar numa área com a cor errada, o número daquela área aparece em destaque para ela procurar o lápis.
+- **Zoom** (todos os modos): pinça com dois dedos ou botões ＋ − ⤢. Nos números, arrastar com um dedo move o desenho.
 - **Pintar livre**: lápis, giz, neon, balde e borracha sobre o desenho. 🪄 "Não sair da linha" mantém o traço dentro da área.
 - **Desenhar**: folha em branco.
 - **Minhas obras**: tudo que foi guardado com ⭐ (e as pinturas com números terminadas).
@@ -36,6 +37,8 @@ Ajustes opcionais por desenho (`"opcoes": { ... }`):
 - `minCor`: descarta cores que ocupam menos que essa fração da imagem (padrão 0.001)
 - `minArea`: área mínima (em pixels) de cada região
 - `bordas`: `false` para não criar linha entre cores vizinhas sem contorno
+- `fechar`: liga pontas soltas de traços (ex.: fios de cabelo) com linhas invisíveis, até N pixels
+- `linhas`: traços extras desenhados à mão, em pixels da imagem original (ex.: contorno do cabelo na testa)
 
 Também dá para adicionar pelo próprio iPad com o cartão **+ Adicionar foto**.
 Funciona melhor com desenhos estilo cartoon: cores chapadas e contorno preto.
@@ -45,5 +48,5 @@ Seção "Grandes Mulheres": desenhos e textos do livro de colorir “Vamos Color
 para meninas se inspirarem”, de @mariliaamaral999.
 
 ## Desenhos próprios (Bichinhos e Santos)
-Gerados por `ferramentas/gerar.py` a partir de `ferramentas/santos.py` e `ferramentas/bichos.py`
+Gerados por `ferramentas/gerar.py` a partir de `ferramentas/santos.py`, `ferramentas/bichos.py` e `ferramentas/princesas.py`
 (usam o kit em `ferramentas/kit.py`). Para refazer: `python3 ferramentas/gerar.py`.
