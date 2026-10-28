@@ -48,5 +48,5 @@ Seção "Grandes Mulheres": desenhos e textos do livro de colorir “Vamos Color
 para meninas se inspirarem”, de @mariliaamaral999.
 
 ## Desenhos próprios (Bichinhos e Santos)
-Gerados por `ferramentas/gerar.py` a partir de `ferramentas/santos.py`, `ferramentas/bichos.py` e `ferramentas/princesas.py`
+Gerados por `ferramentas/gerar.py` a partir de `ferramentas/santos.py`, `ferramentas/bichos.py`, `ferramentas/princesas.py` e `ferramentas/donaldson.py`
 (usam o kit em `ferramentas/kit.py`). Para refazer: `python3 ferramentas/gerar.py`.

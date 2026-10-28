@@ -72,18 +72,6 @@
   "grupo": "Bichinhos"
  },
  {
-  "id": "baleia-e-caracol",
-  "nome": "A baleia e o caracol",
-  "arquivo": "bichos/baleia-e-caracol.svg",
-  "grupo": "Bichinhos"
- },
- {
-  "id": "monstro-e-ratinho",
-  "nome": "O monstro e o ratinho",
-  "arquivo": "bichos/monstro-e-ratinho.svg",
-  "grupo": "Bichinhos"
- },
- {
   "id": "macaquinho",
   "nome": "Macaquinho curioso",
   "arquivo": "bichos/macaquinho.svg",
@@ -137,6 +125,94 @@
   "arquivo": "princesas/branca-de-neve.svg",
   "grupo": "Princesas",
   "texto": "Branca de Neve morava numa casinha na floresta com sete anões. Ela era bondosa e alegre, e os passarinhos adoravam cantar com ela. Mas cuidado com a maçã!"
+ },
+ {
+  "id": "baleia-e-caracol",
+  "nome": "A baleia e o caracol",
+  "arquivo": "bichos/baleia-e-caracol.svg",
+  "grupo": "Histórias da Julia Donaldson",
+  "texto": "Um caracolzinho sonhava em conhecer o mundo. Ele pegou carona na cauda de uma baleia enorme e os dois viajaram juntos pelos mares. Quando a baleia precisou de ajuda, o pequeno caracol mostrou que ser pequeno não impede ninguém de ser corajoso.",
+  "credito": "Desenhos do Ateliê inspirados nos livros de Julia Donaldson e Axel Scheffler."
+ },
+ {
+  "id": "monstro-e-ratinho",
+  "nome": "O Grúfalo e o ratinho",
+  "arquivo": "bichos/monstro-e-ratinho.svg",
+  "grupo": "Histórias da Julia Donaldson",
+  "texto": "Um ratinho passeava pela floresta escura e, para se proteger, inventou um monstro assustador: o Grúfalo! Só que o Grúfalo existia de verdade... Mas o ratinho foi tão esperto que até o Grúfalo ficou com medo dele.",
+  "credito": "Desenhos do Ateliê inspirados nos livros de Julia Donaldson e Axel Scheffler."
+ },
+ {
+  "id": "gato-cantor",
+  "nome": "MC Cat, o gato cantor",
+  "arquivo": "bichos/gato-cantor.svg",
+  "grupo": "Histórias da Julia Donaldson",
+  "texto": "MC Cat é um gato listrado que adora cantar junto com seu dono, um músico de rua. Um dia os dois se perdem um do outro, mas essa história tem um final feliz, com direito a filhotes cantores!",
+  "credito": "Desenhos do Ateliê inspirados nos livros de Julia Donaldson e Axel Scheffler."
+ },
+ {
+  "id": "bruxa-e-a-vassoura",
+  "nome": "A bruxa e a vassoura",
+  "arquivo": "donaldson/bruxa-e-a-vassoura.svg",
+  "grupo": "Histórias da Julia Donaldson",
+  "texto": "Uma bruxa voava na sua vassoura com o gato quando o vento levou o chapéu, o laço e a varinha. Um cachorro, um passarinho e um sapo ajudaram a encontrar tudo e pediram um lugar na vassoura. Sempre cabe mais um amigo!",
+  "credito": "Desenhos do Ateliê inspirados nos livros de Julia Donaldson e Axel Scheffler."
+ },
+ {
+  "id": "filho-do-grufalo",
+  "nome": "O filho do Grúfalo",
+  "arquivo": "donaldson/filho-do-grufalo.svg",
+  "grupo": "Histórias da Julia Donaldson",
+  "texto": "O filho do Grúfalo não tinha medo de nada e saiu na noite de neve para procurar o famoso Rato Malvado. Lá na floresta ele viu uma sombra enorme... mas era só o ratinho esperto de novo!",
+  "credito": "Desenhos do Ateliê inspirados nos livros de Julia Donaldson e Axel Scheffler."
+ },
+ {
+  "id": "homem-graveto",
+  "nome": "Homem-Graveto",
+  "arquivo": "donaldson/homem-graveto.svg",
+  "grupo": "Histórias da Julia Donaldson",
+  "texto": "O Homem-Graveto morava numa árvore com sua família. Um dia ele foi parar longe de casa: um cachorro achou que ele era um graveto para brincar! Depois de muita aventura, ele voltou para casa bem no Natal.",
+  "credito": "Desenhos do Ateliê inspirados nos livros de Julia Donaldson e Axel Scheffler."
+ },
+ {
+  "id": "zog",
+  "nome": "Zog, o dragãozinho",
+  "arquivo": "donaldson/zog.svg",
+  "grupo": "Histórias da Julia Donaldson",
+  "texto": "Zog é um dragãozinho que estuda na escola de dragões. Ele se esforça muito, cai bastante e se machuca, mas nunca desiste. Com a ajuda de uma princesa que gosta de cuidar dos outros, ele aprende muita coisa.",
+  "credito": "Desenhos do Ateliê inspirados nos livros de Julia Donaldson e Axel Scheffler."
+ },
+ {
+  "id": "superminhoca",
+  "nome": "Superminhoca",
+  "arquivo": "donaldson/superminhoca.svg",
+  "grupo": "Histórias da Julia Donaldson",
+  "texto": "Superminhoca é a minhoca mais forte do jardim! Ela vira corda de pular, pescador e até ponte para ajudar os amigos. Quando ela precisa de ajuda, os bichinhos do jardim se juntam para salvá-la.",
+  "credito": "Desenhos do Ateliê inspirados nos livros de Julia Donaldson e Axel Scheffler."
+ },
+ {
+  "id": "tiddler",
+  "nome": "Tiddler, o peixinho",
+  "arquivo": "donaldson/tiddler.svg",
+  "grupo": "Histórias da Julia Donaldson",
+  "texto": "Tiddler é um peixinho que vive chegando atrasado na escola e sempre inventa uma história incrível para explicar. Um dia ele se perde de verdade no mar, e são as suas histórias que ajudam ele a voltar para casa.",
+  "credito": "Desenhos do Ateliê inspirados nos livros de Julia Donaldson e Axel Scheffler."
+ },
+ {
+  "id": "macaquinho-procura-mamae",
+  "nome": "Macaquinho procura a mamãe",
+  "arquivo": "donaldson/macaquinho-procura-mamae.svg",
+  "grupo": "Histórias da Julia Donaldson",
+  "texto": "Um macaquinho perdeu a mamãe na floresta. Uma borboleta quis ajudar, mas levou ele até vários bichos que não se parecem nada com a mamãe dele! No fim, ele descobre que a mamãe é bem parecida com ele.",
+  "credito": "Desenhos do Ateliê inspirados nos livros de Julia Donaldson e Axel Scheffler."
+ },
+ {
+  "id": "casamento-dos-espantalhos",
+  "nome": "O casamento dos espantalhos",
+  "arquivo": "donaldson/casamento-dos-espantalhos.svg",
+  "grupo": "Histórias da Julia Donaldson",
+  "texto": "Dois espantalhos se apaixonaram e resolveram se casar. Eles saíram pela fazenda procurando tudo para a festa: penas, conchas e flores. O casamento ficou lindo!",
+  "credito": "Desenhos do Ateliê inspirados nos livros de Julia Donaldson e Axel Scheffler."
  },
  {
   "id": "santa-terezinha",

@@ -199,6 +199,40 @@ def macaquinho():
                flor(100, 540, RS, r=18))
 
 
+def gato_listrado(x, y, s, lenco, flip=False):
+    listras = ('M-98 -70 Q-84 -66 -72 -74 M-104 -30 Q-88 -26 -76 -34 M98 -70 Q84 -66 72 -74 M104 -30 Q88 -26 76 -34 '
+               'M-40 -312 L-30 -294 M0 -322 L0 -300 M40 -312 L30 -294 M-48 -80 L-20 -80 M18 -80 L46 -80 M-48 -50 L-20 -50 M18 -50 L46 -50')
+    return g(x, y, s,
+             p('M70 -30 Q170 -40 160 -140 Q155 -200 130 -210 Q140 -150 120 -100 Q100 -60 60 -60 Z', CZ),
+             p('M-80 -2 Q-115 -120 -62 -192 L62 -192 Q115 -120 80 -2 Z', CZ),
+             p('M-38 -188 Q-58 -100 -22 -24 L22 -24 Q58 -100 38 -188 Z', BR),
+             rect(-52, -112, 34, 112, CZ, 14), rect(18, -112, 34, 112, CZ, 14),
+             el(-35, -6, 24, 12, BR), el(35, -6, 24, 12, BR),
+             poly([(-76, -280), (-90, -372), (-22, -318)], CZ), poly([(76, -280), (90, -372), (22, -318)], CZ),
+             poly([(-70, -292), (-80, -348), (-40, -316)], RC), poly([(70, -292), (80, -348), (40, -316)], RC),
+             el(0, -252, 88, 76, CZ),
+             el(0, -214, 42, 30, BR),
+             c(-32, -268, 25, BR), c(32, -268, 25, BR), c(-26, -276, 10, PR), c(38, -276, 10, PR),
+             poly([(-12, -238), (12, -238), (0, -224)], RC),
+             p('M-20 -214 Q0 -184 20 -214 Z', VI),
+             p(listras),
+             p('M-40 -222 L-110 -232 M-40 -212 L-108 -206 M40 -222 L110 -232 M40 -212 L108 -206'),
+             poly([(-8, -180), (-62, -205), (-56, -160)], lenco), poly([(8, -180), (62, -205), (56, -160)], lenco),
+             c(0, -180, 14, lenco), flip=flip)
+
+
+def gato_cantor():
+    estrelas = ''.join(poly([(x + 14 * math.cos(math.pi / 2 + i * math.pi / 5) * (1 if i % 2 == 0 else 0.45),
+                              y - 14 * math.sin(math.pi / 2 + i * math.pi / 5) * (1 if i % 2 == 0 else 0.45)) for i in range(10)], LIMAO)
+                       for x, y in [(60, 60), (180, 110), (300, 50), (420, 120), (520, 60), (740, 160), (90, 220)])
+    lua = p('M690 50 A55 55 0 0 0 690 160 A70 70 0 0 1 690 50 Z', AC)
+    casa = rect(20, 300, 150, 120, BR, 4) + poly([(10, 305), (95, 240), (180, 305)], CZ) + rect(45, 330, 40, 40, AM, 4) + rect(110, 340, 35, 80, MR, 4)
+    caminho = p('M4 470 Q120 440 200 400 L240 410 Q160 460 60 500 L4 510 Z', PE)
+    return svg(rect(4, 4, 792, 592, MA, 12), estrelas, lua, arvore(260, 420, 1, VE, MR), arvore(700, 430, 1.1, VE, MR), casa,
+               chao(VD, 430), caminho,
+               gato_listrado(330, 560, 1.15, VD), gato_listrado(580, 560, 0.75, VM, flip=True))
+
+
 DESENHOS = {
     'unicornio': ('Unicórnio', unicornio),
     'passarinho': ('Passarinho', passarinho),
@@ -211,4 +245,5 @@ DESENHOS = {
     'baleia-e-caracol': ('A baleia e o caracol', baleia_caracol),
     'monstro-e-ratinho': ('O monstro e o ratinho', monstro_ratinho),
     'macaquinho': ('Macaquinho curioso', macaquinho),
+    'gato-cantor': ('MC Cat, o gato cantor', gato_cantor),
 }
